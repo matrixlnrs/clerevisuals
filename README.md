@@ -9,12 +9,14 @@ HTML / CSS
 
 ## Project Structure (simplified)
 ```src/
+src/
 ├── app/
 │   ├── navbar/
 │   ├── landing/
 │   ├── gallery/
 │   └── app.component.*
-└─└── styles.c
+└── styles.c
+```
 
 ## Getting Started
 Install dependencies
