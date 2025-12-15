@@ -3,11 +3,11 @@
 This project is a portfolio website built with Angular, designed to showcase my work to brands interested in collaborating with me.
 
 ## Tech Stack
-Angular
-TypeScript
-HTML / CSS
+- Angular
+- TypeScript
+- HTML / CSS
 
-## Project Structure (simplified)
+## Project Structure
 ```src/
 src/
 ├── app/
