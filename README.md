@@ -8,13 +8,13 @@ TypeScript
 HTML / CSS
 
 ## Project Structure (simplified)
-src/
+`src/
 ├── app/
 │   ├── navbar/
 │   ├── landing/
 │   ├── gallery/
 │   └── app.component.*
-└── styles.css
+└── styles.css`
 
 ## Getting Started
 Install dependencies
