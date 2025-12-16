@@ -1,0 +1,12 @@
+<nav class="glass-nav">
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active">{{ i18n.t('navbar.home') }}</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">{{ i18n.t('navbar.about') }}</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">{{ i18n.t('navbar.connect') }}</a></li>
+  </ul>
+  <div class="lang-toggle">
+  <span class="lang" [class.active]="currentLang === 'en'" (click)="changeLanguage('en')">EN</span>
+  <span class="separator">/</span>
+  <span class="lang" [class.active]="currentLang === 'fr'" (click)="changeLanguage('fr')">FR</span>
+</div>
+</nav>

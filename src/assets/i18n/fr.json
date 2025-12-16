@@ -1,0 +1,11 @@
+{
+  "hero": {
+    "title": "CLEREVISUALS",
+    "subtitle": "PHOTOGRAPHE SPORTIF"
+  },
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "connect": "Contact"
+  }
+}

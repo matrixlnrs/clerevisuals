@@ -1,0 +1,14 @@
+.fixed-icons {
+  position: fixed;
+  bottom: 11px;
+  right: 11px;
+  display: flex;
+  gap: 7px;
+  z-index: 1000;
+}
+
+.fixed-icons img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
