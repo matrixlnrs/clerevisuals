@@ -1,0 +1,37 @@
+<div class="connect-content-wrapper">
+    <!-- <om-silk></om-silk> -->
+    <img src="images/topo-black.png" class="background-img" alt="background">
+  <div class="main-text">
+    <p>
+      I've partnered with brands like 
+      <om-typewriter
+        [words]="['Natif Festival', 'Sunset Bike', 'Sunset Run', 'Circuit Paul Ricard', 'Dubrocrunner']"
+        [writeDelay]="1000"
+        [writeSpeed]="100"
+        styleClass="brand-highlight"
+      ></om-typewriter>
+    </p>
+
+    <p>
+      If you have a collaboration in mind, don't hesitate <br>
+      to reach out to me via emails with the details!
+    </p>
+
+    <p>
+      You can also follow my work on 
+      <a href="https://instagram.com/yourprofile" target="_blank" class="link-highlight">Instagram</a>
+    </p>
+  </div>
+</div>
+
+<div class="location-status">
+  <span class="status-dot"></span>
+  <span class="location-text">Toulon, FR</span>
+</div>
+
+<div class="time-status" *ngIf="now$ | async as now">
+  <span class="date-part">{{ now | date:'dd/MM/yyyy' }}</span>
+  <span class="hour-part">
+    {{ now | date:'HH' }}<span class="blink">:</span>{{ now | date:'mm' }}<span class="blink">:</span>{{ now | date:'ss' }}
+  </span>
+</div>
