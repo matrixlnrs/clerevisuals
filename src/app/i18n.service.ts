@@ -1,26 +1,27 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import i18n from './i18n'; // ton fichier i18n.ts
+import { Injectable, signal } from '@angular/core';
+import i18nInstance from './i18n'; // Importe l'instance configurée dans i18n.ts
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root' // Rend le service disponible partout automatiquement
+})
 export class I18nService {
-  private isBrowser = false;
+  // Signal réactif : permet à l'interface de changer instantanément
+  currentLang = signal(i18nInstance.language || 'en');
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
-    this.isBrowser = isPlatformBrowser(platformId);
+  constructor() {
+    // On écoute l'événement de changement de langue de i18next
+    i18nInstance.on('languageChanged', (lang) => {
+      this.currentLang.set(lang);
+    });
   }
 
-  t(key: string): string {
-    if (!this.isBrowser) return '';
-    return i18n.t(key);
+  // Change la langue (ex: 'fr' ou 'en')
+  changeLanguage(lang: string) {
+    i18nInstance.changeLanguage(lang);
   }
 
-  changeLanguage(lang: 'en' | 'fr') {
-    if (!this.isBrowser) return;
-    i18n.changeLanguage(lang);
-  }
-
-  get currentLanguage(): 'en' | 'fr' {
-    return (i18n.language as 'en' | 'fr') || 'en';
+  // Fonction de traduction utilisée par ton Pipe ou tes composants
+  t(key: string, params?: any): string {
+    return i18nInstance.t(key, params) as string;
   }
 }

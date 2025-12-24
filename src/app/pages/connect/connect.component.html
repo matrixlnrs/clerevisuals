@@ -1,15 +1,20 @@
 <div class="connect-content-wrapper">
-    <!-- <om-silk></om-silk> -->
     <img src="images/topo-black.png" class="background-img" alt="background">
   <div class="main-text">
     <p>
       I've partnered with brands like 
-      <om-typewriter
+      
+      <om-typewriter *ngIf="isBrowser; else staticText"
         [words]="['Natif Festival', 'Sunset Bike', 'Sunset Run', 'Circuit Paul Ricard', 'Dubrocrunner']"
         [writeDelay]="1000"
         [writeSpeed]="100"
         styleClass="brand-highlight"
       ></om-typewriter>
+
+      <ng-template #staticText>
+        <span class="brand-highlight">Natif Festival</span>
+      </ng-template>
+
     </p>
 
     <p>

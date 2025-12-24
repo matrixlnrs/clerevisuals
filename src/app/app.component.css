@@ -12,3 +12,15 @@
   height: 25px;
   cursor: pointer;
 }
+
+.main-transition {
+  display: flex;
+  justify-content: center;
+  background:hsl(0, 0%, 20%);
+}
+
+.transition {
+  height: 2px;
+  width: 80%;
+  background: linear-gradient(90deg, hsl(0, 0%, 20%), hsl(0, 0%, 20%));
+}

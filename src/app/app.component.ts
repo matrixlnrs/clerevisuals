@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { LandingComponent } from "./features/landing/landing.component";
 import { NavbarComponent } from "./features/navbar/navbar.component";
-import { GalleryComponent } from "./features/gallery/gallery.component";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [LandingComponent, NavbarComponent, GalleryComponent],
+  imports: [NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

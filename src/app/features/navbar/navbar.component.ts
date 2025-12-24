@@ -3,6 +3,7 @@ import { I18nService } from '../../i18n.service';
 
 @Component({
   selector: 'app-navbar',
+  standalone: true,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
@@ -14,6 +15,6 @@ export class NavbarComponent {
   }
 
   get currentLang() {
-    return this.i18n.currentLanguage;
+    return this.i18n.currentLang;
   }
 }
