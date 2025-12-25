@@ -3,10 +3,9 @@
   <img src="images/topo-black.png" class="background-img" alt="background">
 
   <main class="hero-section">
-    
-    <!-- <div class="logo">CLEREVISUALS</div> -->
 
     <div class="center-content">
+
       <h1>
         {{ i18n.t('hero.title-1') }}<br>
         {{ i18n.t('hero.title-2') }}<br>
@@ -15,7 +14,7 @@
       
       <div class="subtitle-wrapper">
         <om-typewriter *ngIf="isBrowser; else staticTitle"
-          [words]="['Sport Photographer']"
+          [words]="subtitleWords"
           [writeDelay]="50"
           [writeSpeed]="80"
         ></om-typewriter>
@@ -24,6 +23,7 @@
           <span>{{ i18n.t('hero.subtitle') }}</span>
         </ng-template>
       </div>
+      
     </div>
 
     <div class="floating-images" 
@@ -32,19 +32,15 @@
       <div class="img-card pos-1">
         <img src="images/running.jpg" alt="Runner">
       </div>
-
       <div class="img-card pos-2">
         <img src="images/ferrari1.jpg" alt="Ferrari">
       </div>
-
       <div class="img-card pos-3">
         <img src="images/landscape.jpg" alt="Landscape">
       </div>
-
       <div class="img-card pos-4">
         <img src="images/sunset-bike.jpg" alt="Cyclist">
       </div>
-
       <div class="img-card pos-5">
         <img src="images/track.jpg" alt="Track & Field">
       </div>

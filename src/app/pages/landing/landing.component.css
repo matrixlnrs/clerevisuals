@@ -1,37 +1,24 @@
-/* --- CONFIGURATION GLOBALE --- */
 .landing-wrapper {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: #0e0e0e; /* Noir profond */
-  color: white;
+  background-color: #0e0e0e;
+  color: #FFFFFF;
   overflow: hidden;
   font-family: 'Helvetica Now Display', 'Arial', sans-serif;
 }
 
-/* --- FOND --- */
 .background-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.2; /* Plus discret pour laisser ressortir les photos */
+  opacity: 0.2;
   pointer-events: none;
   z-index: 0;
 }
 
-.logo {
-  position: absolute;
-  top: 30px;
-  left: 40px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  z-index: 20;
-}
-
-/* --- HERO SECTION --- */
 .hero-section {
   position: relative;
   width: 100%;
@@ -41,27 +28,25 @@
   align-items: center;
 }
 
-/* --- TEXTE CENTRAL (Style Magazine) --- */
 .center-content {
   text-align: center;
   position: relative;
-  z-index: 10; /* Niveau intermédiaire */
-  pointer-events: none; /* Important : laisse la souris cliquer sur les images en dessous */
-  mix-blend-mode: exclusion; /* 🔥 L'EFFET CLÉ : le texte réagit aux images sous lui */
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
 }
 
 h1 {
-  font-size: 4.5vw; /* Taille responsive géante */
+  font-size: 4.5vw;
   line-height: 0.9;
   text-transform: uppercase;
-  font-weight: 800; /* Très gras */
-  letter-spacing: -2px; /* Lettres serrées */
+  font-weight: 800;
+  letter-spacing: -2px;
   margin: 0 0 20px 0;
 }
 
-/* Style spécifique pour la 3ème ligne (artistique) */
 .italic-line {
-  font-family: 'Times New Roman', serif; /* Contraste de police */
+  font-family: 'Times New Roman', serif;
   font-style: italic;
   font-weight: 400;
 }
@@ -69,29 +54,28 @@ h1 {
 .subtitle-wrapper {
   font-size: 1rem;
   font-weight: 400;
-  letter-spacing: 4px; /* Très espacé */
+  letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0.8;
   display: inline-block;
 }
 
-/* --- IMAGES FLOTTANTES --- */
 .floating-images {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none;
   z-index: 5;
-  transition: transform 0.1s ease-out; /* Mouvement fluide */
+  transition: transform 0.1s ease-out;
 }
 
 .img-card {
   position: absolute;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  pointer-events: auto; /* Réactive la souris */
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animation sophistiquée */
+  pointer-events: auto;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
-  filter: grayscale(100%); /* Noir et blanc par défaut */
+  filter: grayscale(100%);
   border-radius: 12px;
 }
 
@@ -103,20 +87,16 @@ h1 {
   border-radius: 12px;
 }
 
-/* --- EFFET HOVER (Comme la vidéo) --- */
 .img-card:hover {
-  transform: scale(1.15) !important; /* Grossit */
-  z-index: 100; /* Passe DEVANT le texte */
-  filter: grayscale(0%); /* Devient couleur */
+  transform: scale(1.15) !important;
+  z-index: 100;
+  filter: grayscale(0%);
   border: 1px solid rgba(255,255,255,0.2);
 }
 
 .img-card:hover img {
-  transform: scale(1.1); /* Zoom léger dans l'image */
+  transform: scale(1.15);
 }
-
-/* --- POSITIONNEMENT --- */
-/* J'ai ajusté pour que ça entoure bien le texte */
 
 /* Runner */
 .pos-1 {
@@ -162,8 +142,8 @@ h1 {
 /* --- MOBILE --- */
 @media (max-width: 768px) {
   h1 { font-size: 3rem; }
-  
-  /* Sur mobile, on cache certaines images pour ne pas surcharger */
+
+  /* hide some to ne pas surcharger */
   .pos-2, .pos-3 { display: none; }
   
   .pos-1 { top: 20%; left: 19%; width: 120px; height: 160px; opacity: 0.6; }

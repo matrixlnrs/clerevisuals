@@ -25,10 +25,13 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {}
 
+  get subtitleWords(): string[] {
+    return [this.i18n.t('hero.subtitle')];
+  }
+
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
     if (this.isBrowser) {
-      // J'ai légèrement réduit le facteur (0.03) pour un mouvement plus subtil comme sur la vidéo
       const x = (window.innerWidth / 2 - e.clientX) * 0.03;
       const y = (window.innerHeight / 2 - e.clientY) * 0.03;
       this.moveX = x;
