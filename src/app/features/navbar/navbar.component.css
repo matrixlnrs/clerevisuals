@@ -54,11 +54,6 @@
   border-radius: 10px;
 }
 
-.active {
-  color: #a78bfa;
-  font-weight: 600;
-}
-
 .lang-toggle {
   display: flex;
   align-items: center;
