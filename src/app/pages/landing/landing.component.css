@@ -1,9 +1,172 @@
-/* html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    background-color: #000000;
-    color: #ffffff;
-} */
+/* --- CONFIGURATION GLOBALE --- */
+.landing-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #0e0e0e; /* Noir profond */
+  color: white;
+  overflow: hidden;
+  font-family: 'Helvetica Now Display', 'Arial', sans-serif;
+}
+
+/* --- FOND --- */
+.background-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2; /* Plus discret pour laisser ressortir les photos */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  z-index: 20;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- TEXTE CENTRAL (Style Magazine) --- */
+.center-content {
+  text-align: center;
+  position: relative;
+  z-index: 10; /* Niveau intermédiaire */
+  pointer-events: none; /* Important : laisse la souris cliquer sur les images en dessous */
+  mix-blend-mode: exclusion; /* 🔥 L'EFFET CLÉ : le texte réagit aux images sous lui */
+}
+
+h1 {
+  font-size: 4.5vw; /* Taille responsive géante */
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 800; /* Très gras */
+  letter-spacing: -2px; /* Lettres serrées */
+  margin: 0 0 20px 0;
+}
+
+/* Style spécifique pour la 3ème ligne (artistique) */
+.italic-line {
+  font-family: 'Times New Roman', serif; /* Contraste de police */
+  font-style: italic;
+  font-weight: 400;
+}
+
+.subtitle-wrapper {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 4px; /* Très espacé */
+  text-transform: uppercase;
+  opacity: 0.8;
+  display: inline-block;
+}
+
+/* --- IMAGES FLOTTANTES --- */
+.floating-images {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.1s ease-out; /* Mouvement fluide */
+}
+
+.img-card {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  pointer-events: auto; /* Réactive la souris */
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animation sophistiquée */
+  cursor: pointer;
+  filter: grayscale(100%); /* Noir et blanc par défaut */
+  border-radius: 12px;
+}
+
+.img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  border-radius: 12px;
+}
+
+/* --- EFFET HOVER (Comme la vidéo) --- */
+.img-card:hover {
+  transform: scale(1.15) !important; /* Grossit */
+  z-index: 100; /* Passe DEVANT le texte */
+  filter: grayscale(0%); /* Devient couleur */
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.img-card:hover img {
+  transform: scale(1.1); /* Zoom léger dans l'image */
+}
+
+/* --- POSITIONNEMENT --- */
+/* J'ai ajusté pour que ça entoure bien le texte */
+
+/* Runner */
+.pos-1 {
+  top: 12%;
+  left: 16%;
+  width: 200px;
+  height:260px;
+}
+
+/* Ferrari */
+.pos-2 {
+  top: 16%;
+  left: 42%;
+  width: 240px;
+  height: 160px;
+}
+
+/* Landscape */
+.pos-3 {
+  top: 18%;
+  right: 12%;
+  width: 200px;
+  height:260px;
+}
+
+/* Cyclist */
+.pos-4 {
+  bottom: 10%;
+  left: 27%;
+  width: 200px;
+  height:260px;
+}
+
+/* Track & Field */
+.pos-5 {
+  bottom: 15%;
+  right: 26%;
+  width: 260px;
+  height: 180px;
+}
+
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  
+  /* Sur mobile, on cache certaines images pour ne pas surcharger */
+  .pos-2, .pos-3 { display: none; }
+  
+  .pos-1 { top: 20%; left: 19%; width: 120px; height: 160px; opacity: 0.6; }
+  .pos-4 { bottom: 13%; left: 27%; width: 140px; height: 140px; opacity: 0.6; }
+  .pos-5 { bottom: 15%; right: 30%; width: 130px; height: 180px; opacity: 0.6; }
+}
