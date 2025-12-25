@@ -1,6 +1,6 @@
 .glass-nav {
   width: 100%;
-  max-width: 600px;
+  max-width: 550px;
   padding: 12px 0;
   position: fixed;
   top: 12px;
@@ -22,6 +22,7 @@
   letter-spacing: 1.8px;
   transition: transform 0.4s ease, opacity 0.4s ease;
   will-change: transform, opacity;
+  font-size: 1.1rem;
 }
 
 .hidden {
@@ -45,6 +46,7 @@
   padding: 6px 14px;
   cursor: pointer;
   color: #F3F8F1;
+  text-decoration: none;
 }
 
 .glass-nav a:hover {
@@ -53,7 +55,7 @@
 }
 
 .active {
-  color: #000;
+  color: #a78bfa;
   font-weight: 600;
 }
 
@@ -71,7 +73,7 @@
 }
 
 .lang {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   letter-spacing: 1.5px;
   color: rgba(255, 255, 255, 0.45);
 }
