@@ -10,22 +10,19 @@ import { map } from 'rxjs/operators';
   standalone: true,
   imports: [NgxTypewriterComponent, CommonModule],
   templateUrl: './connect.component.html',
-  styleUrl: './connect.component.scss'
+  styleUrl: './connect.component.css'
 })
 export class ConnectComponent implements OnInit {
   now$: Observable<Date>;
   
-  // 👇 AJOUTE CETTE LIGNE (Variable publique)
   isBrowser: boolean; 
 
   constructor(
     public i18n: I18nService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    // On stocke l'info : est-on sur le navigateur ?
     this.isBrowser = isPlatformBrowser(this.platformId);
 
-    // Logique de l'horloge (correcte maintenant)
     if (this.isBrowser) {
       this.now$ = timer(0, 1000).pipe(map(() => new Date()));
     } else {

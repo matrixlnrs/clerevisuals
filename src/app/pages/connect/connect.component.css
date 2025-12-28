@@ -1,0 +1,167 @@
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.typewriter-large {
+  font-size: 5rem;
+  letter-spacing: 0.25rem;
+  font-weight: bold;
+  padding-right: 0.5rem;
+}
+
+.connect-content-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0e0e0e;
+  text-align: center;
+}
+
+.background-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #ffffff;
+  max-width: 800px;
+  z-index: 10;
+  letter-spacing: 1.5px;
+}
+
+.main-text p {
+  margin-bottom: 1.5rem;
+}
+
+:host ::ng-deep .brand-highlight {
+  color: #ff4d00;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 100px;
+}
+
+.link-highlight {
+  color: #ff4d00;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.link-highlight:hover {
+  border-bottom: 1px solid #ff4d00;
+}
+
+.location-status {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', monospace;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ff4d00;
+  border-radius: 50%;
+  position: relative;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #ff4d00;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+.location-text {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.time-status {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 15px;
+  font-family: 'Inter', monospace;
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+.date-part {
+  font-weight: 300;
+}
+
+.hour-part {
+  font-weight: 400;
+  min-width: 100px;
+  text-align: right;
+}
+
+.blink {
+  animation: blinker 2s step-start infinite;
+  color: #fff;
+  margin: 0 1px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+:host ::ng-deep .om-typewriter-cursor,
+:host ::ng-deep .cursor {
+  color: #ff4d00 !important;
+  font-weight: 100;
+  opacity: 0.8;
+}

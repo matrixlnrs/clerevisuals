@@ -2,28 +2,28 @@
     <img src="images/topo-black.png" class="background-img" alt="background">
   <div class="main-text">
     <p>
-      I've partnered with brands like 
+      {{ i18n.t('connect.brands') }}
       
       <om-typewriter *ngIf="isBrowser; else staticText"
         [words]="['Natif Festival', 'Sunset Bike', 'Sunset Run', 'Circuit Paul Ricard', 'Dubrocrunner']"
         [writeDelay]="1000"
         [writeSpeed]="100"
+        [deleteDelay]="10"
         styleClass="brand-highlight"
       ></om-typewriter>
 
       <ng-template #staticText>
-        <span class="brand-highlight">Natif Festival</span>
+        <span class="brand-highlight">Circuit Paul Ricard</span>
       </ng-template>
 
     </p>
 
     <p>
-      If you have a collaboration in mind, don't hesitate <br>
-      to reach out to me via emails with the details!
+      {{ i18n.t('connect.collab-1') }} <br> {{ i18n.t('connect.collab-2') }}
     </p>
 
     <p>
-      You can also follow my work on 
+      {{ i18n.t('connect.follow') }}
       <a href="https://instagram.com/yourprofile" target="_blank" class="link-highlight">Instagram</a>
     </p>
   </div>
