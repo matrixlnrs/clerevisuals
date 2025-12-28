@@ -1,0 +1,135 @@
+<div class="about-page">
+  <img src="images/topo-black.png" class="background-img" alt="background">
+
+  <main class="content-container">
+    
+    <section class="profile-section">
+      <div class="image-wrapper">
+        <img src="images/mathis.jpg" alt="Portrait" class="profile-pic">
+      </div>
+
+      <div class="bio-wrapper">
+        <p class="role-tag">{{ i18n.t('about.role') }}</p>
+        <div class="bio-text">
+          <p class="highlight-text">
+            {{ i18n.t('about.bio-1') }}
+          </p>
+          <p>
+            {{ i18n.t('about.bio-2') }}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    @if (isBrowser) {
+      <div class="timeline-container">
+
+        <div class="timeline-wrapper"></div>
+          <h1>{{ i18n.t('about.story') }}</h1>
+
+          <om-timeline [entryGap]="'5rem'" [titleMaxWidth]="'15rem'" [orientation]="'switch'">
+            
+            <div class="timeline-section-title">
+              <h1>{{ i18n.t('about.past') }}</h1>
+            </div>
+
+            <om-timeline-entry>
+              <ng-template #timelineTitle>
+                <div class="year-wrapper">
+                  <span class="timeline-year">2022</span>
+                </div>
+              </ng-template>
+              <ng-template #timelineContent>
+                <div class="timeline-card">
+                  <span class="card-accent"></span>
+                  <p class="card-header">The Start (Seattle, WA)</p>
+                  <ul>
+                    <li>Orting High School Sports</li>
+                    <li>Football, Basketball, Baseball</li>
+                  </ul>
+                </div>
+              </ng-template>
+            </om-timeline-entry>
+
+            <om-timeline-entry>
+              <ng-template #timelineTitle>
+                <div class="year-wrapper"><span class="timeline-year">2024</span></div>
+              </ng-template>
+              <ng-template #timelineContent>
+                <div class="timeline-card right">
+                  <span class="card-accent"></span>
+                  <p class="card-header">{{ i18n.t('about.card-header-3') }}</p>
+                  <p class="card-header">{{ i18n.t('about.card-header-7') }}</p>
+                  <ul>
+                    <li>{{ i18n.t('about.card-text-4') }}</li>
+                    <li>{{ i18n.t('about.card-text-5') }}</li>
+                    <li>{{ i18n.t('about.card-text-6') }}</li>
+                  </ul>
+                  <div class="divider"></div>
+                  <p class="card-header">{{ i18n.t('about.card-header-8') }}</p>
+                  <ul><li>{{ i18n.t('about.card-text-7') }}</li></ul>
+                </div>
+              </ng-template>
+            </om-timeline-entry>
+
+            <om-timeline-entry>
+              <ng-template #timelineTitle>
+                <div class="year-wrapper"><span class="timeline-year">2025</span></div>
+              </ng-template>
+              <ng-template #timelineContent>
+                <div class="timeline-card">
+                  <span class="card-accent"></span>
+                  <p class="card-header">{{ i18n.t('about.card-header-1') }}</p>
+                  <ul>
+                    <li>{{ i18n.t('about.card-text-1') }}</li>
+                    <li>{{ i18n.t('about.card-text-2') }}</li>
+                  </ul>
+                  <div class="divider"></div>
+                  <p class="card-header">{{ i18n.t('about.card-header-2') }}</p>
+                  <ul><li>{{ i18n.t('about.card-text-3') }}</li></ul>
+                </div>
+              </ng-template>
+            </om-timeline-entry>
+
+            <div class="timeline-section-title spacer">
+              <h1>{{ i18n.t('about.upcoming') }}</h1>
+            </div>
+
+            <om-timeline-entry>
+              <ng-template #timelineTitle>
+                <div class="year-wrapper"><span class="timeline-year future">2026</span></div>
+              </ng-template>
+              <ng-template #timelineContent>
+                <div class="timeline-card future-card right">
+                  <span class="card-accent"></span>
+                  <p class="card-header">{{ i18n.t('about.card-header-5') }}</p>
+                  <ul>
+                    <li>{{ i18n.t('about.card-text-10') }}</li>
+                    <li>{{ i18n.t('about.card-text-11') }}</li>
+                    <li>{{ i18n.t('about.card-text-12') }}</li>
+                  </ul>
+                </div>
+              </ng-template>
+            </om-timeline-entry>
+
+            <om-timeline-entry>
+              <ng-template #timelineTitle>
+                <div class="year-wrapper"><span class="timeline-year future">2028</span></div>
+              </ng-template>
+              <ng-template #timelineContent>
+                <div class="timeline-card future-card compact-card">
+                  <span class="card-accent"></span>
+                  <p class="card-header">{{ i18n.t('about.card-header-6') }}</p>
+                  <ul>
+                    <li>{{ i18n.t('about.card-text-13') }}</li>
+                    <li>{{ i18n.t('about.card-text-14') }}</li>
+                  </ul>
+                </div>
+              </ng-template>
+            </om-timeline-entry>
+
+          </om-timeline>
+        </div>
+    }
+  </main>
+</div>
