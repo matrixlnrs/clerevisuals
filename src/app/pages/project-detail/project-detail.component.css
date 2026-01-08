@@ -1,0 +1,183 @@
+/* --- CONFIGURATION GLOBALE --- */
+:host {
+  display: block;
+  background-color: #0e0e0e;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Helvetica Now Display', 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.background-img {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+  padding: 120px 5% 100px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* --- HEADER & NAVIGATION --- */
+.back-button {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 300;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.back-button:hover {
+  color: #ff4d00;
+}
+
+.project-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.project-meta {
+  color: #ff4d00;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.project-description {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 60px;
+}
+
+/* --- MASONRY GALLERY --- */
+.project-gallery {
+  column-count: 3; 
+  column-gap: 15px;
+  width: 100%;
+}
+
+.gallery-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
+  break-inside: avoid;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  cursor: zoom-in;
+}
+
+.gallery-item:hover {
+  transform: scale(1.01);
+}
+
+.gallery-item img {
+  width: 100%;       /* Forces the small image to fill the card width */
+  height: auto;      /* Keeps the aspect ratio correct */
+  display: block;
+  min-height: 200px; /* Prevents layout shifts while loading */
+  background-color: #1a1a1a; /* Shows a dark box before image appears */
+}
+
+/* --- LIGHTBOX (POP-UP) STYLES --- */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000; /* High z-index to cover the Navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  cursor: zoom-out;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 95%;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  animation: zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 2010;
+}
+
+.close-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* --- GLOBAL NAVBAR HIDING LOGIC --- */
+/* Targets your Navbar/Header when the 'lightbox-active' class is on the body */
+::ng-deep body.lightbox-active nav, 
+::ng-deep body.lightbox-active .navbar, 
+::ng-deep body.lightbox-active header {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1100px) {
+  .project-gallery { column-count: 2; }
+}
+
+@media (max-width: 700px) {
+  .project-gallery { column-count: 1; }
+  .close-btn { top: 15px; right: 20px; font-size: 2.5rem; }
+  .content-container { padding-top: 100px; }
+  .project-header h1 { font-size: 2.2rem; }
+}

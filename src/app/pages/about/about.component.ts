@@ -9,7 +9,7 @@ import { NgxTimelineComponent, NgxTimelineEntryComponent } from '@omnedia/ngx-ti
   standalone: true,
   imports: [CommonModule, RouterModule, NgxTimelineComponent, NgxTimelineEntryComponent],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrl: './about.component.css'
 })
 export class AboutComponent implements AfterViewInit {
   isBrowser: boolean;

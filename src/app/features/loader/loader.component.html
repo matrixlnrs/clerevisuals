@@ -1,0 +1,15 @@
+<div class="loader-overlay" [class.fade-out]="!isVisible">
+  <div class="loader-container">
+    <div class="logo-wrapper">
+      <h1 class="logo-text">CLEREVISUALS</h1>
+      <div class="logo-glow"></div>
+    </div>
+    
+    <div class="status-box">
+      <span class="counter">{{ progress }}%</span>
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+      </div>
+    </div>
+  </div>
+</div>

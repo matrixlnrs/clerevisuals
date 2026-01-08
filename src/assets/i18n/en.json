@@ -8,7 +8,8 @@
   "navbar": {
     "home": "Home",
     "about": "About",
-    "connect": "Connect"
+    "connect": "Connect",
+    "projects": "Projects"
   },
   "story-telling": {
     "title": "BOLD STORYTELLING AT THE INTERSECTION OF SPORTS, EMOTION, AND ART",
@@ -36,7 +37,7 @@
     "card-text-6": "GT Cup Open",
     "card-text-7": "Natif Festival",
     "card-header-4": "The Start (Seattle, WA)",
-    "card-text-8": "Orting High School Sports",
+    "card-text-8": "Orting High School Events",
     "card-text-9": "Football, Basketball, Baseball",
     "card-header-5": "Target Events",
     "card-text-10": "Miramas Meeting",
@@ -47,5 +48,23 @@
     "card-text-14": "Olympic Games Accreditation",
     "card-header-7": "Motorsport & Circuit Events",
     "card-header-8": "Festival & Live Events"
+  },
+  "work": {
+    "title": "Photography",
+    "back": "Back to projects",
+    "name-1": "French Elite Championship",
+    "name-2": "Landscape Photography",
+    "name-3": "Circuit Paul Ricard",
+    "name-4": "Sunset Bike",
+    "name-5": "Track and Field"
+  },
+  "detailed": {
+    "back": "Back to projects",
+    "work": "Photography",
+    "name-1": "French Elite Championship",
+    "name-2": "Landscape Photography",
+    "name-3": "Circuit Paul Ricard",
+    "name-4": "Sunset Bike",
+    "name-5": "Track and Field"
   }
 }

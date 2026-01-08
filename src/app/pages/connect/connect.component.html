@@ -1,5 +1,4 @@
 <div class="connect-content-wrapper">
-    <img src="images/topo-black.png" class="background-img" alt="background">
   <div class="main-text">
     <p>
       {{ i18n.t('connect.brands') }}
@@ -15,7 +14,6 @@
       <ng-template #staticText>
         <span class="brand-highlight">Circuit Paul Ricard</span>
       </ng-template>
-
     </p>
 
     <p>
@@ -24,19 +22,21 @@
 
     <p>
       {{ i18n.t('connect.follow') }}
-      <a href="https://instagram.com/yourprofile" target="_blank" class="link-highlight">Instagram</a>
+      <a href="https://instagram.com/clerevisuals" target="_blank" class="link-highlight">Instagram</a>
     </p>
+
+    <div class="mobile-status-container">
+      <div class="location-status">
+        <span class="status-dot"></span>
+        <span class="location-text">Toulon, FR</span>
+      </div>
+
+      <div class="time-status" *ngIf="now$ | async as now">
+        <span class="date-part">{{ now | date:'dd/MM/yyyy' }}</span>
+        <span class="hour-part">
+          {{ now | date:'HH' }}<span class="blink">:</span>{{ now | date:'mm' }}<span class="blink">:</span>{{ now | date:'ss' }}
+        </span>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="location-status">
-  <span class="status-dot"></span>
-  <span class="location-text">Toulon, FR</span>
-</div>
-
-<div class="time-status" *ngIf="now$ | async as now">
-  <span class="date-part">{{ now | date:'dd/MM/yyyy' }}</span>
-  <span class="hour-part">
-    {{ now | date:'HH' }}<span class="blink">:</span>{{ now | date:'mm' }}<span class="blink">:</span>{{ now | date:'ss' }}
-  </span>
 </div>

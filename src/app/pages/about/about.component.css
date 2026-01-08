@@ -1,0 +1,287 @@
+/* --- CONFIGURATION GLOBALE --- */
+:host {
+  display: block;
+  background-color: #0e0e0e;
+  min-height: 100vh;
+  font-family: 'Helvetica Now Display', 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+  padding: 180px 10% 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- SECTION PROFIL --- */
+.profile-section {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  margin-bottom: 120px;
+}
+
+.profile-section .image-wrapper {
+  flex: 1;
+}
+
+.profile-section .image-wrapper .profile-pic {
+  width: 100%;
+  border-radius: 24px;
+  filter: grayscale(20%);
+  transition: filter 0.5s ease;
+}
+
+.profile-section .image-wrapper .profile-pic:hover {
+  filter: grayscale(0%);
+}
+
+.profile-section .bio-wrapper {
+  flex: 1.2;
+}
+
+.profile-section .bio-wrapper .role-tag {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.profile-section .bio-wrapper .bio-text p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+/* --- TITLES --- */
+h1 {
+  font-size: 4.5vw;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(to bottom, #ffffff 30%, #d4d4d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(204, 85, 20, 0.1));
+  text-align: center;
+  width: 100%;
+}
+
+.timeline-section-title {
+  text-align: center;
+  margin: 40px 0;
+  width: 100%;
+}
+
+.timeline-section-title.spacer {
+  margin-top: 100px;
+}
+
+/* --- DYNAMIC TIMELINE (LIBRARY OVERRIDES) --- */
+::ng-deep .om-timeline-container {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 1. Racing Line Glow (SVG Fix) */
+::ng-deep .om-timeline-line {
+  background-color: #ff4d00 !important;
+  stroke: #ff4d00 !important;
+  stroke-width: 2px !important;
+  width: 2px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.8 !important;
+  filter: drop-shadow(0 0 8px rgba(255, 77, 0, 0.8)) !important;
+}
+
+::ng-deep .om-timeline-dot {
+  background-color: #0e0e0e !important;
+  border: 2px solid #ff4d00 !important;
+  box-shadow: 0 0 20px rgba(255, 77, 0, 0.8) !important;
+  z-index: 10 !important;
+  width: 16px !important;
+  height: 16px !important;
+  visibility: visible !important;
+}
+
+/* 2. Alignment Logic - Snap Years to Center Line */
+::ng-deep .om-timeline-entry-title,
+::ng-deep .om-timeline-entry-content {
+  flex: 1 !important;
+  max-width: none !important;
+}
+
+/* Year on the Right (Card on Left) */
+::ng-deep .om-timeline-entry-side-left .year-wrapper {
+  display: flex !important;
+  justify-content: flex-start !important;
+  padding-left: 25px !important;
+}
+
+/* Year on the Left (Card on Right) */
+::ng-deep .om-timeline-entry-side-right .year-wrapper {
+  display: flex !important;
+  justify-content: flex-end !important;
+  padding-right: 25px !important;
+}
+
+/* --- 3. YEARS (SCROLL GLOW) --- */
+.timeline-year {
+  display: block;
+  font-size: 5.5rem;
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: default;
+}
+
+.timeline-year.future {
+  -webkit-text-stroke: 1px rgba(255, 77, 0, 0.4);
+}
+
+.timeline-year.active {
+  -webkit-text-stroke: 0px;
+  transform: scale(1.1);
+}
+
+.timeline-year.active:not(.future) {
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+.timeline-year.active.future {
+  color: #ff4d00;
+  text-shadow: 0 0 40px rgba(255, 77, 0, 0.5);
+}
+
+/* --- 4. CARDS (GLASSMORPHISM & 3D HOVER) --- */
+.timeline-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 16px;
+  min-width: 320px;
+  width: fit-content;
+  overflow: hidden;
+  /* Initial 3D state */
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              background 0.3s, 
+              border-color 0.3s;
+}
+
+.timeline-card.compact-card {
+  min-width: unset !important;
+  max-width: 380px !important;
+}
+
+.timeline-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #ff4d00;
+  opacity: 0.6;
+  box-shadow: 0 0 10px #ff4d00;
+  transition: opacity 0.3s;
+}
+
+/* --- HOVER EFFECT --- */
+.timeline-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: perspective(1000px) rotateY(4deg) translateY(-5px);
+}
+
+.timeline-card:hover .card-accent {
+  opacity: 1;
+}
+
+/* Trigger Shimmer */
+.timeline-card:hover::after {
+  left: 150%;
+  transition: 0.7s ease-in-out;
+}
+
+/* --- SHIMMER REFLECTION --- */
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+}
+
+/* Internal Card Styles */
+.timeline-card .card-header {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.timeline-card .divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 15px 0;
+}
+
+.timeline-card ul {
+  padding-left: 0;
+  margin: 0;
+}
+
+.timeline-card ul li {
+  list-style: none;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.timeline-card ul li::before {
+  content: '/';
+  color: #ff4d00;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.timeline-card.right {
+  margin-left: 450px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .timeline-year {
+    font-size: 3.5rem;
+  }
+  .timeline-card {
+    min-width: auto;
+    width: 100%;
+  }
+}

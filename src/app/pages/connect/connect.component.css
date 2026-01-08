@@ -1,63 +1,56 @@
-.content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
-
-.typewriter-large {
-  font-size: 5rem;
-  letter-spacing: 0.25rem;
-  font-weight: bold;
-  padding-right: 0.5rem;
+/* --- CONFIGURATION GLOBALE --- */
+:host {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .connect-content-wrapper {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #0e0e0e;
+  height: 100dvh;
+  background-color: transparent;
   text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.background-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.2;
-  z-index: 1;
-  pointer-events: none;
-}
-
+/* --- TEXTE CENTRAL --- */
 .main-text {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.6;
   color: #ffffff;
-  max-width: 800px;
+  max-width: 100%;
   z-index: 10;
   letter-spacing: 1.5px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .main-text p {
+  font-size: 1.5rem;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
 }
 
+/* --- FIX DU TYPEWRITER --- */
 :host ::ng-deep .brand-highlight {
   color: #ff4d00;
   font-weight: 500;
-  display: inline-block;
-  min-width: 100px;
+  display: inline !important; 
+  min-width: 0 !important; 
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .om-typewriter-container {
+  display: inline !important;
 }
 
 .link-highlight {
@@ -67,13 +60,10 @@
   transition: border-color 0.3s ease;
 }
 
-.link-highlight:hover {
-  border-bottom: 1px solid #ff4d00;
-}
-
+/* --- STATUS DESKTOP (RETOUR GAUCHE ET DROITE) --- */
 .location-status {
   position: absolute;
-  left: 40px;
+  left: 40px; /* Aligné à gauche sur Desktop */
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -82,9 +72,25 @@
   font-family: 'Inter', monospace;
   color: #fff;
   font-size: 1.2rem;
-  letter-spacing: 0.5px;
 }
 
+.time-status {
+  position: absolute;
+  right: 60px; /* Aligné à droite sur Desktop */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column; /* Pile la date et l'heure */
+  align-items: flex-end; /* Aligne le texte à droite */
+  gap: 5px;
+  font-family: 'Inter', monospace;
+  color: #fff;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+/* --- ANIMATIONS --- */
 .status-dot {
   width: 12px;
   height: 12px;
@@ -96,72 +102,76 @@
 .status-dot::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   border-radius: 50%;
   background-color: #ff4d00;
-  opacity: 0.6;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(3.5);
-    opacity: 0;
-  }
-}
-
-.location-text {
-  font-weight: 300;
-  opacity: 0.9;
-}
-
-.time-status {
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 15px;
-  font-family: 'Inter', monospace;
-  color: #fff;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  opacity: 0.9;
-  z-index: 10;
-}
-
-.date-part {
-  font-weight: 300;
-}
-
-.hour-part {
-  font-weight: 400;
-  min-width: 100px;
-  text-align: right;
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3.5); opacity: 0; }
 }
 
 .blink {
   animation: blinker 2s step-start infinite;
-  color: #fff;
-  margin: 0 1px;
 }
 
-@keyframes blinker {
-  50% {
-    opacity: 0;
+@keyframes blinker { 50% { opacity: 0; } }
+
+/* --- RESPONSIVE MOBILE (CORRECTIF FINAL) --- */
+@media (max-width: 768px) {
+  /* On masque les éléments Desktop isolés s'ils sont en double dans ton HTML */
+  .connect-content-wrapper > .location-status, 
+  .connect-content-wrapper > .time-status {
+    display: none;
   }
-}
 
-:host ::ng-deep .om-typewriter-cursor,
-:host ::ng-deep .cursor {
-  color: #ff4d00 !important;
-  font-weight: 100;
-  opacity: 0.8;
+  .main-text p {
+    font-size: 1.15rem;
+    padding: 0 10px;
+  }
+
+  .mobile-status-container {
+    position: absolute;
+    bottom: 35px; /* Aligné en bas sur mobile */
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .location-status, .time-status {
+    position: static; /* Annule l'absolute du Desktop pour le flux mobile */
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .location-status {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .time-status {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    flex-direction: row; /* Date et heure sur la même ligne sur mobile */
+    gap: 10px;
+  }
+
+  .hour-part {
+    text-align: center;
+    min-width: unset;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+  }
 }

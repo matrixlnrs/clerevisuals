@@ -1,13 +1,14 @@
 import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgxTypewriterComponent } from '@omnedia/ngx-typewriter';
 import { I18nService } from '../../i18n.service';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, NgxTypewriterComponent],
+  imports: [CommonModule, NgxTypewriterComponent, RouterModule],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })

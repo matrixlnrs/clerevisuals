@@ -1,0 +1,139 @@
+/* --- CONFIGURATION GLOBALE --- */
+:host {
+  display: block;
+  background-color: #0e0e0e;
+  /* Change min-height to 100% and ensure overflow is allowed */
+  min-height: 100%; 
+  font-family: 'Helvetica Now Display', 'Arial', sans-serif;
+  /* Keep hidden for X to prevent side-scrolling from animations, 
+     but ensure Y is auto/visible */
+  overflow-x: hidden;
+  overflow-y: auto; 
+}
+
+/* Use ::ng-deep to reach inside the om-cryptic-text component */
+::ng-deep .work-header .cryptic-text {
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #fff;
+  display: block;
+  text-align: left; /* Align to the left as per your Figma */
+  margin-bottom: 2rem;
+}
+
+.work-page {
+  /* Ensure the wrapper itself doesn't trap the scroll */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+  padding: 140px 8% 100px;
+  max-width: 1600px;
+  margin: 0 auto;
+  /* Ensure it expands with content */
+  height: auto; 
+}
+
+.category-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+/* --- PORTFOLIO GRID --- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 3rem;
+}
+
+.project-item {
+  cursor: pointer;
+}
+
+.project-item .image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.project-item .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.5s ease;
+  filter: grayscale(10%);
+}
+
+/* Shimmer effect overlay */
+.project-item .image-container .shimmer-overlay {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: 0s;
+}
+
+.project-item .project-info {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+/* 
+/* --- HOVER EFFECTS --- */
+.project-item:hover .image-container {
+  transform: translateY(-8px);
+}
+
+.project-item:hover .image-container img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.project-item:hover .image-container .shimmer-overlay {
+  left: 150%;
+  transition: 0.8s ease-in-out;
+}
+
+.project-item:hover .project-info {
+  color: #fff;
+}
+
+.cryptic-text {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .content-container {
+    padding-top: 100px;
+  }
+}

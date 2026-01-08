@@ -1,7 +1,5 @@
 <div class="landing-wrapper">
   
-  <img src="images/topo-black.png" class="background-img" alt="background">
-
   <main class="hero-section">
 
     <div class="center-content">
@@ -27,25 +25,28 @@
     </div>
 
     <div class="floating-images" 
-         [style.transform]="'translate(' + moveX + 'px, ' + moveY + 'px)'">
-      
-      <div class="img-card pos-1">
-        <img src="images/running.jpg" alt="Runner">
+     [style.transform]="'translate(' + moveX + 'px, ' + moveY + 'px)'">
+  
+      <div class="img-card pos-1" [routerLink]="['/work', 'track-and-field']">
+        <img src="images/track/running.webp" alt="Runner">
       </div>
-      <div class="img-card pos-2">
-        <img src="images/ferrari1.jpg" alt="Ferrari">
+
+      <div class="img-card pos-2" [routerLink]="['/work', 'circuit-paul-ricard']">
+        <img src="images/circuit/ferrari.webp" alt="Ferrari">
       </div>
-      <div class="img-card pos-3">
-        <img src="images/landscape.jpg" alt="Landscape">
+
+      <div class="img-card pos-3" [routerLink]="['/work', 'landscape']">
+        <img src="images/landscape/landscape.webp" alt="Landscape">
       </div>
-      <div class="img-card pos-4">
-        <img src="images/sunset-bike.jpg" alt="Cyclist">
+
+      <div class="img-card pos-4" [routerLink]="['/work', 'sunset-bike']">
+        <img src="images/bike/sunset-bike.webp" alt="Cyclist">
       </div>
-      <div class="img-card pos-5">
-        <img src="images/track.jpg" alt="Track & Field">
+
+      <div class="img-card pos-5" [routerLink]="['/work', 'french-elite-championship']">
+        <img src="images/elite/track.webp" alt="Track & Field">
       </div>
 
     </div>
-
   </main>
 </div>

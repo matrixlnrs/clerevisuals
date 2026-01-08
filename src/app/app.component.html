@@ -1,10 +1,20 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<div class="fixed-icons">
-  <a href="mailto:mathis.lenorais@icloud.com" target="_blank">
-    <img src="images/email-white.png" alt="Email">
-  </a>
-  <a href="https://www.instagram.com/clerevisuals/" target="_blank">
-    <img src="images/insta-white.png" alt="Instagram"> 
-  </a>
+<app-loader *ngIf="isFirstLoad"></app-loader>
+<div class="app-wrapper">
+  <app-navbar></app-navbar>
+  <div class="logo">CLEREVISUALS</div>
+  <img src="images/topo-black.png" class="background-img" alt="background">
+
+  <router-outlet></router-outlet>
+
+    <div class="fixed-icon-left">
+    <a href="mailto:mathis.lenorais@icloud.com" target="_blank" class="email">
+      <img src="images/email-white.png" alt="Email">
+    </a>
+  </div>
+
+  <div class="fixed-icon-right">
+    <a href="https://www.instagram.com/clerevisuals/" target="_blank" class="insta">
+      <img src="images/insta-white.png" alt="Instagram"> 
+    </a>
+  </div>
 </div>

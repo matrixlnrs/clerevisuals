@@ -1,0 +1,41 @@
+<div class="project-detail-page">
+  <img src="images/topo-black.png" class="background-img" alt="background">
+
+  <main class="content-container">
+    <a routerLink="/work" class="back-button">← {{ i18n.t('detailed.back') }}</a>
+
+    <header class="project-header">
+      <h1>{{ project?.name }}</h1>
+      <p class="project-meta">{{ project?.year }} — {{ i18n.t('detailed.work') }}</p>
+    </header>
+
+    <section class="project-description">
+    </section>
+
+    <section class="project-gallery">
+  @for (item of project?.gallery; track item.full) {
+    
+    <div class="gallery-item" (click)="openLightbox(item.full)">
+      
+      <img 
+        [src]="item.thumb" 
+        alt="Gallery image" 
+        loading="lazy"
+        width="600"
+        height="400"
+      >
+    </div>
+
+  }
+</section>
+  </main>
+
+  @if (selectedImage) {
+    <div class="lightbox-overlay" (click)="closeLightbox()">
+      <button class="close-btn" (click)="closeLightbox()">&times;</button>
+      <div class="lightbox-content" (click)="$event.stopPropagation()">
+        <img [src]="selectedImage" alt="Zoomed photography">
+      </div>
+    </div>
+  }
+</div>

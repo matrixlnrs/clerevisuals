@@ -1,0 +1,27 @@
+<div class="work-page">
+
+  <main class="content-container">
+    <header class="work-header">
+      <om-cryptic-text [text]="i18n.t('work.title')" styleClass="cryptic-text" class="category-title"></om-cryptic-text>
+    </header>
+
+    <section class="portfolio-grid">
+      @for (project of projects; track project.id) {
+        <div class="project-item" [routerLink]="['/work', project.id]">
+          
+          <div class="image-container">
+            <img [src]="project.image" [alt]="project.name">
+            
+            <div class="shimmer-overlay"></div>
+          </div>
+
+          <div class="project-info">
+            <span class="project-name">{{ project.name }}</span>
+            <span class="project-year">{{ project.year }}</span>
+          </div>
+
+        </div>
+      }
+    </section>
+  </main>
+</div>

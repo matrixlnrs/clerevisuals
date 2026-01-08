@@ -1,12 +1,39 @@
-<nav class="glass-nav">
-  <ul>
+<nav class="glass-nav" [class.hidden]="isNavbarHidden" [class.mobile-open]="isMenuOpen">
+  <ul class="desktop-links">
     <li><a routerLink="/home" routerLinkActive="active">{{ i18n.t('navbar.home') }}</a></li>
+    <li><a routerLink="/work" routerLinkActive="active">{{ i18n.t('navbar.projects') }}</a></li>
     <li><a routerLink="/about" routerLinkActive="active">{{ i18n.t('navbar.about') }}</a></li>
     <li><a routerLink="/connect" routerLinkActive="active">{{ i18n.t('navbar.connect') }}</a></li>
   </ul>
-  <div class="lang-toggle">
-  <span class="lang" [class.active]="currentLang() === 'en'" (click)="changeLanguage('en')">EN</span>
-  <span class="separator">/</span>
-  <span class="lang" [class.active]="currentLang() === 'fr'" (click)="changeLanguage('fr')">FR</span>
-</div>
+
+  <div class="spacer"></div>
+
+  <div class="lang-toggle desktop-lang">
+    <span class="lang" [class.active]="currentLang() === 'en'" (click)="changeLanguage('en')">EN</span>
+    <span class="separator">/</span>
+    <span class="lang" [class.active]="currentLang() === 'fr'" (click)="changeLanguage('fr')">FR</span>
+  </div>
+
+  <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu-overlay" [class.active]="isMenuOpen">
+  <ul class="mobile-links">
+    <li><a routerLink="/home" (click)="toggleMenu()">{{ i18n.t('navbar.home') }}</a></li>
+    <li><a routerLink="/work" (click)="toggleMenu()">{{ i18n.t('navbar.projects') }}</a></li>
+    <li><a routerLink="/about" (click)="toggleMenu()">{{ i18n.t('navbar.about') }}</a></li>
+    <li><a routerLink="/connect" (click)="toggleMenu()">{{ i18n.t('navbar.connect') }}</a></li>
+    
+    <li class="mobile-lang-item">
+      <div class="lang-toggle">
+        <span class="lang" [class.active]="currentLang() === 'en'" (click)="changeLanguage('en')">EN</span>
+        <span class="separator">/</span>
+        <span class="lang" [class.active]="currentLang() === 'fr'" (click)="changeLanguage('fr')">FR</span>
+      </div>
+    </li>
+  </ul>
+</div>
