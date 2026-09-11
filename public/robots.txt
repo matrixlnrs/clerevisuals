@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The full-res archive is not published — nothing under /images/ is anything
+# but a web-sized derivative, and all of it is fair game for image search.
+
+Sitemap: https://clerevisuals.fr/sitemap.xml

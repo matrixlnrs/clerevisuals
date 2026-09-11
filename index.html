@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- ── SEO ─────────────────────────────────────────────────────────
+         The page is one URL: the FR/EN switch is client-side, so there is
+         a single canonical and no hreflang alternates to declare.        -->
+    <title>Clerevisuals — Sports Photography in Provence</title>
+    <meta name="description"
+      content="Sports and event photography in Provence by Mathis Lenorais — track &amp; field, motorsport at Circuit Paul Ricard, cycling, festivals and landscapes. Based in Aix-en-Provence, available across France." />
+    <meta name="author" content="Mathis Lenorais" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://clerevisuals.fr/" />
+    <meta name="theme-color" content="#0D0D0D" />
+
+    <!-- ── Social sharing — absolute URLs, scrapers don't resolve relative ones -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://clerevisuals.fr/" />
+    <meta property="og:site_name"   content="Clerevisuals" />
+    <meta property="og:title"       content="Clerevisuals — Sports Photography in Provence" />
+    <meta property="og:description" content="Track &amp; field, motorsport, cycling and event photography in Provence by Mathis Lenorais." />
+    <meta property="og:image"       content="https://clerevisuals.fr/images/og-cover.jpg" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"   content="A cycling peloton on the banked track at Circuit Paul Ricard" />
+    <meta property="og:locale"      content="en_GB" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Clerevisuals — Sports Photography in Provence" />
+    <meta name="twitter:description" content="Track &amp; field, motorsport, cycling and event photography in Provence." />
+    <meta name="twitter:image"       content="https://clerevisuals.fr/images/og-cover.jpg" />
+
+    <!-- ── Fonts ───────────────────────────────────────────────────────
+         Loaded as a plain stylesheet on a preconnected origin. The usual
+         `onload="this.rel='stylesheet'"` swap is deliberately not used: it is
+         an inline event handler, which would force `script-src 'unsafe-inline'`
+         in the CSP (see netlify.toml). `display=swap` means text paints in the
+         fallback face immediately, so the trick buys very little here.
+
+         Next step if you want the third party gone entirely: self-host these
+         two families. It removes two DNS+TLS handshakes from the critical path
+         and sidesteps the GDPR question about Google Fonts serving visitor IPs. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap"
+    />
+
+    <!-- ── Hero image — the LCP element, so fetch it before the JS runs ── -->
+    <link rel="preload" as="image" href="/images/hero.webp" fetchpriority="high" />
+
+    <!-- ── Who this business is, for search engines ─────────────────── -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://clerevisuals.fr/#business",
+        "name": "Clerevisuals",
+        "url": "https://clerevisuals.fr/",
+        "image": "https://clerevisuals.fr/images/og-cover.jpg",
+        "description": "Sports and event photography in Provence — track & field, motorsport, cycling, festivals and landscapes.",
+        "founder": { "@type": "Person", "name": "Mathis Lenorais" },
+        "areaServed": [
+          { "@type": "Place", "name": "Provence-Alpes-Côte d'Azur" },
+          { "@type": "Country", "name": "France" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Aix-en-Provence",
+          "addressRegion": "Provence-Alpes-Côte d'Azur",
+          "addressCountry": "FR"
+        },
+        "knowsLanguage": ["fr", "en"],
+        "sameAs": [
+          "https://www.instagram.com/clerevisuals/",
+          "https://www.flickr.com/photos/clerephotography/albums/",
+          "https://www.linkedin.com/in/mathis-lenorais-clere-06a149272/"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# ── Full-res photo archive ───────────────────────────────────────────────
+# ~835 MB of originals. Deliberately NOT in the repo: git stores every
+# version of a binary forever, and nothing here is ever served. Keep it
+# backed up somewhere real (external drive / cloud), not in version control.
+#
+# The derivatives under public/images/ ARE committed, on purpose: Netlify
+# builds from this repo and has no access to the originals, so the 900px and
+# 2200px copies have to travel with the code.
+photos-source/
+
+# OS noise
+.DS_Store
+**/.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Local env
+.env
+.env.local
+.env.*.local
