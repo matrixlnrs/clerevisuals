@@ -61,7 +61,10 @@ export function Lightbox({ photos, initialIndex, onClose }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center"
+      /* Above the album overlay (z-9000), below the custom cursor (z-9999).
+         The lightbox can be opened from the album grid, which lives inside
+         that overlay — at a lower z-index it opens invisibly behind it. */
+      className="fixed inset-0 z-[9500] flex items-center justify-center"
       style={{
         backgroundColor: 'rgba(0, 0, 0, 0.80)',
         backdropFilter: 'blur(22px)',
