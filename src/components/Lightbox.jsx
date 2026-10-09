@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { largeSrc, thumbSrc } from '../utils/imageUtils'
+import { lockScroll } from '../utils/scrollLock'
 
 export function Lightbox({ photos, initialIndex, onClose }) {
   const [index, setIndex]             = useState(initialIndex)
@@ -50,12 +51,8 @@ export function Lightbox({ photos, initialIndex, onClose }) {
     }
   }, [index, photos])
 
-  /* ── Lock body scroll ────────────────────────────── */
-  useEffect(() => {
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = prev }
-  }, [])
+  /* ── Lock page scroll ────────────────────────────── */
+  useEffect(() => lockScroll(), [])
 
   const ctrl = `transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`
 

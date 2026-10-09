@@ -9,6 +9,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { photos      } from '../data/photos'
 import { Lightbox    } from './Lightbox'
 import { useLanguage } from '../contexts/LanguageContext'
+import { lockScroll } from '../utils/scrollLock'
 import { thumbSrc   } from '../utils/imageUtils'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -101,7 +102,7 @@ function AlbumOverlay({ album, onClose, t }) {
 
   // Animate in + lock page scrollbar
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    const unlock = lockScroll()
     gsap.fromTo(overlayRef.current,
       { opacity: 0 },
       { opacity: 1, duration: 0.3, ease: 'power2.out' },
@@ -110,7 +111,7 @@ function AlbumOverlay({ album, onClose, t }) {
       { y: 36, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.08 },
     )
-    return () => { document.body.style.overflow = '' }
+    return unlock
   }, [])
 
   // ESC closes overlay (but not if lightbox is open — Lightbox handles that)
