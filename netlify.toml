@@ -21,6 +21,7 @@
     # style-src needs 'unsafe-inline': React writes inline style attributes
     # throughout the components. script-src does not, which is the one that
     # matters — keep it that way by not introducing inline event handlers.
+    # Fonts are self-hosted, so no third-party origin appears here at all.
     Content-Security-Policy = """default-src 'self'; \
       base-uri 'self'; \
       object-src 'none'; \
@@ -28,8 +29,8 @@
       form-action 'self'; \
       img-src 'self' data:; \
       script-src 'self'; \
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
-      font-src 'self' https://fonts.gstatic.com; \
+      style-src 'self' 'unsafe-inline'; \
+      font-src 'self'; \
       connect-src 'self' https://api.web3forms.com"""
 
 # ── Caching ──────────────────────────────────────────────────────────────

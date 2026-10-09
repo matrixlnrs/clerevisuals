@@ -10,7 +10,7 @@ import { photos      } from '../data/photos'
 import { Lightbox    } from './Lightbox'
 import { useLanguage } from '../contexts/LanguageContext'
 import { lockScroll } from '../utils/scrollLock'
-import { thumbSrc   } from '../utils/imageUtils'
+import { thumbSrc, thumbSrcSet } from '../utils/imageUtils'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,6 +51,9 @@ function AlbumCard({ album, index, onOpen, t }) {
       {/* Cover — thumbnail for fast load */}
       <img
         src={thumbSrc(album.cover.src)}
+        srcSet={thumbSrcSet(album.cover.src)}
+        /* Card width is 80vw on phones, 38vw from the sm breakpoint up. */
+        sizes="(min-width: 640px) 38vw, 80vw"
         alt={`${album.category} album cover`}
         loading="lazy"
         decoding="async"
@@ -206,6 +209,8 @@ function AlbumOverlay({ album, onClose, t }) {
               {/* Thumbnail in grid — click → Lightbox loads the 2200px copy */}
               <img
                 src={thumbSrc(photo.src)}
+                srcSet={thumbSrcSet(photo.src)}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 alt={photo.alt ?? photo.title}
                 loading="lazy"
                 decoding="async"

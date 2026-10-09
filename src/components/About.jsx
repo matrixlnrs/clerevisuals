@@ -92,9 +92,15 @@ export function About() {
             style={{ opacity: 0 }}
           >
             <div className="absolute inset-0 portrait-overlay" />
+            {/* Lazy: this sits most of a page below the fold, and eagerly it
+                was 412 KiB competing with the first screen for bandwidth. */}
             <img
               src="/images/portrait.webp"
-              alt="Clerevisuals photographer"
+              srcSet="/images/portrait-sm.webp 600w, /images/portrait.webp 1000w"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              alt="Mathis Lenorais, the photographer behind Clerevisuals"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover object-top mix-blend-luminosity opacity-75"
               onError={e => { e.target.style.display = 'none' }}
             />

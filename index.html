@@ -34,21 +34,16 @@
     <meta name="twitter:image"       content="https://clerevisuals.fr/images/og-cover.jpg" />
 
     <!-- ── Fonts ───────────────────────────────────────────────────────
-         Loaded as a plain stylesheet on a preconnected origin. The usual
-         `onload="this.rel='stylesheet'"` swap is deliberately not used: it is
-         an inline event handler, which would force `script-src 'unsafe-inline'`
-         in the CSP (see netlify.toml). `display=swap` means text paints in the
-         fallback face immediately, so the trick buys very little here.
-
-         Next step if you want the third party gone entirely: self-host these
-         two families. It removes two DNS+TLS handshakes from the critical path
-         and sidesteps the GDPR question about Google Fonts serving visitor IPs. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap"
-    />
+         Self-hosted, declared in src/fonts.css and bundled into the site's
+         own stylesheet — no third-party request, nothing blocking on another
+         origin. The two faces the first screen actually needs are preloaded
+         so they are in flight before the CSS has even been parsed; the rest
+         are fetched on demand. `crossorigin` is required on font preloads
+         even same-origin, or the browser fetches the file twice. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/cormorant-garamond-300-latin.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/inter-300-latin.woff2" />
 
     <!-- ── Who this business is, for search engines ─────────────────── -->
     <script type="application/ld+json">

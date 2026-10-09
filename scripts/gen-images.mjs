@@ -2,13 +2,14 @@
  * gen-images.mjs
  *
  * Builds every derivative the site needs from the full-res originals in
- * public/images/<album>/, then writes the photo catalogue the app imports.
+ * photos-source/<album>/, then writes the photo catalogue the app imports.
  *
  * Usage:
  *   npm run images
  *
- * For public/images/tf/01.jpg it produces:
- *   public/images/tf/thumbs/01.jpg   900px  jpeg  — grids, album covers
+ * For photos-source/tf/01.jpg it produces:
+ *   public/images/tf/thumbs/01.webp     900px webp — grids, album covers
+ *   public/images/tf/thumbs-md/01.webp  640px webp — same, for smaller slots
  *   public/images/tf/large/01.webp  2200px  webp  — lightbox (longest side)
  *
  * The originals are never served: they stay on disk as the archive and are
@@ -18,7 +19,13 @@
  * public/sitemap.xml with an image entry per photo.
  *
  * Settings:
- *   THUMB / LARGE — max width + quality per tier
+ *   THUMB / THUMB_MD / LARGE — max width + quality per tier
+ *
+ * Note: a derivative is rebuilt when its source is newer, not when these
+ * settings change. After editing a width or quality, delete the output folders
+ * you changed — the thumbs directories under each album, say — or they will be
+ * left alone. (Writing that path with a glob here would have closed this very
+ * comment block, which is its own small lesson.)
  */
 
 import sharp from 'sharp'
@@ -41,7 +48,8 @@ const SITE_URL = 'https://clerevisuals.fr'
 // ── Tune these to taste ───────────────────────────────────────────────────
 // `width` constrains the width only (thumbs sit in fixed-width grid columns);
 // `box` constrains the longest side, so tall portraits don't balloon.
-const THUMB = { dir: 'thumbs', width:  900, quality: 72, format: 'jpeg' }
+const THUMB    = { dir: 'thumbs',    width: 900, quality: 74, format: 'webp' }
+const THUMB_MD = { dir: 'thumbs-md', width: 640, quality: 74, format: 'webp' }
 const LARGE = { dir: 'large',  box:   2200, quality: 80, format: 'webp' }
 
 // One-off images that are not part of an album. `source` is a path inside
@@ -57,11 +65,19 @@ const SINGLES = [
     resize: { width: 1200, height: 630, fit: 'cover', position: 'attention' },
     format: 'jpeg', quality: 82,
   },
+  // Two widths: the About portrait fills half a desktop column but only a
+  // phone's width on mobile, where the large one was pure waste.
   {
     source: 'singles/portrait.jpg',
     out:    'portrait.webp',
-    resize: { width: 1400, withoutEnlargement: true },
-    format: 'webp', quality: 80,
+    resize: { width: 1000, withoutEnlargement: true },
+    format: 'webp', quality: 78,
+  },
+  {
+    source: 'singles/portrait.jpg',
+    out:    'portrait-sm.webp',
+    resize: { width: 600, withoutEnlargement: true },
+    format: 'webp', quality: 76,
   },
 ]
 // ─────────────────────────────────────────────────────────────────────────
@@ -147,7 +163,7 @@ async function processAlbum(album) {
     const width   = rotated ? meta.height : meta.width
     const height  = rotated ? meta.width  : meta.height
 
-    for (const tier of [THUMB, LARGE]) {
+    for (const tier of [THUMB, THUMB_MD, LARGE]) {
       if (await derive(src, album, name, tier, srcStat.mtimeMs)) built++
     }
 
@@ -200,9 +216,9 @@ async function writeSitemap(albums) {
 
 async function main() {
   console.log('\n🖼   Building image derivatives…\n')
-  for (const tier of [THUMB, LARGE]) {
+  for (const tier of [THUMB, THUMB_MD, LARGE]) {
     const limit = tier.box ? `${tier.box}px longest side` : `${tier.width}px wide`
-    console.log(`   ${tier.dir.padEnd(7)} ${limit.padEnd(20)} ${tier.format} q${tier.quality}`)
+    console.log(`   ${tier.dir.padEnd(9)} ${limit.padEnd(20)} ${tier.format} q${tier.quality}`)
   }
   console.log('')
 

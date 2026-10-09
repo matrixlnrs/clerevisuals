@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { thumbSrc } from '../utils/imageUtils'
+import { thumbSrc, thumbSrcSet } from '../utils/imageUtils'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -73,6 +73,9 @@ export function GalleryCard({ photo, onClick }) {
       {/* Image — 900px thumbnail; the lightbox loads the 2200px copy */}
       <img
         src={thumbSrc(photo.src)}
+        srcSet={thumbSrcSet(photo.src)}
+        /* The masonry is 1 column below 640px, 2 below 1024, 3 above. */
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         alt={photo.alt ?? photo.title}
         loading="lazy"
         decoding="async"
