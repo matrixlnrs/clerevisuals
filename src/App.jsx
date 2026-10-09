@@ -16,15 +16,29 @@ import { Contact              } from './components/Contact'
 import { Footer               } from './components/Footer'
 
 /**
- * The intro plays on every load. It is the first thing the site says, and the
- * stopwatch is short enough not to wear out its welcome; skipping it on a
- * reload mostly just makes the site look like it failed to start.
+ * The intro plays once, on the first load, and is skipped on every reload
+ * after that — sitting through the same stopwatch each time you come back to
+ * a tab gets old fast.
  *
- * The one exception is a visitor who asked for reduced motion — they get
- * straight to the work.
+ * sessionStorage, not localStorage, is what sets "once" here: the flag dies
+ * with the tab, so someone returning tomorrow is greeted properly rather than
+ * dropped straight onto the page. Swap it for localStorage if you would
+ * rather a visitor only ever see it a single time.
+ *
+ * A visitor who asked for reduced motion never sees it at all.
  */
 function shouldSkipIntro() {
-  return prefersReducedMotion()
+  if (prefersReducedMotion()) return true
+  try {
+    return sessionStorage.getItem('clere-intro') === 'seen'
+  } catch {
+    // Private mode or blocked storage — just play it.
+    return false
+  }
+}
+
+function markIntroSeen() {
+  try { sessionStorage.setItem('clere-intro', 'seen') } catch { /* not essential */ }
 }
 
 function Portfolio() {
@@ -38,7 +52,7 @@ function Portfolio() {
     <>
       {/* Cinematic intro — unmounts once onComplete fires */}
       {!ready && (
-        <Loader onComplete={() => setReady(true)} />
+        <Loader onComplete={() => { markIntroSeen(); setReady(true) }} />
       )}
 
       {/* Portfolio — always mounted so GSAP / ScrollTrigger can initialise */}
