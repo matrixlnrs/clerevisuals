@@ -45,16 +45,10 @@ const THUMB = { dir: 'thumbs', width:  900, quality: 72, format: 'jpeg' }
 const LARGE = { dir: 'large',  box:   2200, quality: 80, format: 'webp' }
 
 // One-off images that are not part of an album. `source` is a path inside
-// photos-source/, `out` a path inside public/images/. Change `source` here to
-// change the hero shot — the social card is cropped from the same frame so
-// the link preview matches the page.
+// photos-source/, `out` a path inside public/images/. The hero itself has no
+// photograph — this is the card that shows up when the site is shared, and
+// the About portrait.
 const SINGLES = [
-  {
-    source: 'cycling/03.jpg',
-    out:    'hero.webp',
-    resize: { width: 2400, withoutEnlargement: true },
-    format: 'webp', quality: 78,
-  },
   {
     source: 'cycling/03.jpg',
     out:    'og-cover.jpg',

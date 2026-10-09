@@ -9,26 +9,19 @@ gsap.registerPlugin(ScrollTrigger)
 
 export function Hero({ triggerAnimation = false }) {
   const sectionRef  = useRef(null)
-  const bgRef       = useRef(null)
   const contentRef  = useRef(null)
   const { t }       = useLanguage()
 
   // ── Scroll-driven effects (always on mount) ──────────────
   useEffect(() => {
     const section = sectionRef.current
-    const bg      = bgRef.current
     const content = contentRef.current
-    if (!section || !bg || !content) return
+    if (!section || !content) return
 
-    // Scrubbed parallax is the most motion-sickness-inducing effect here.
+    // Scrubbed movement is the most motion-sickness-inducing effect here.
     if (prefersReducedMotion()) return
 
     const ctx = gsap.context(() => {
-      gsap.to(bg, {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: { trigger: section, start: 'top top', end: 'bottom top', scrub: true },
-      })
       gsap.to(content, {
         opacity: 0,
         y: -30,
@@ -66,20 +59,11 @@ export function Hero({ triggerAnimation = false }) {
       className="relative flex items-center justify-center overflow-hidden"
       style={{ minHeight: '100svh' }}
     >
-      {/* ── Background — fully themed ─────────────────── */}
+      {/* ── Background — fully themed ───────────────────
+           Deliberately no photograph here: the mark, the wordmark and the
+           vignette carry the hero on a flat ground. A picture behind them
+           competes with the work further down the page. */}
       <div className="absolute inset-0 bg-surface">
-        <div ref={bgRef} className="absolute inset-[-15%]">
-          {/* Decorative, and the LCP element — fetched at top priority,
-              never lazily. Built by `npm run images` from SINGLES. */}
-          <img
-            src="/images/hero.webp"
-            alt=""
-            aria-hidden="true"
-            fetchPriority="high"
-            className="w-full h-full object-cover opacity-30"
-            onError={e => { e.target.style.display = 'none' }}
-          />
-        </div>
         {/* Themed top-bottom vignette */}
         <div className="absolute inset-0 hero-vignette-tb" />
         {/* Themed side vignette */}

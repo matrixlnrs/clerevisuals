@@ -138,25 +138,26 @@
   to { stroke-dashoffset: 0; }
 }
 
-.draw-c {
-  stroke-dasharray: 320;
-  stroke-dashoffset: 320;
-  animation: drawPath 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+/* The logo's pen strokes. Each one lives inside a mask in ScribbleLogo and
+   carries pathLength="1", so a single dash length works for the frame and for
+   a 70px spike of the flower alike — the component only supplies the delay and
+   duration that place that part in the sequence.
+
+   The second animation is what keeps the pen off the paper until its turn: a
+   round linecap on a zero-length dash still paints a full dot, so without it
+   every part's starting point sits there as a blob of ink from the first
+   frame. Before the delay elapses no fill applies and the base
+   stroke-opacity: 0 wins; from the first frame of the animation it is 1. */
+.logo-ink {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-opacity: 0;
+  animation-name: drawPath, penDown;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.25, 1), steps(1, start);
+  animation-fill-mode: forwards, forwards;
 }
-.draw-v-left {
-  stroke-dasharray: 90;
-  stroke-dashoffset: 90;
-  animation: drawPath 0.4s cubic-bezier(0.4, 0, 0.2, 1) 1.1s forwards;
-}
-.draw-v-right {
-  stroke-dasharray: 90;
-  stroke-dashoffset: 90;
-  animation: drawPath 0.4s cubic-bezier(0.4, 0, 0.2, 1) 1.35s forwards;
-}
-.draw-texture {
-  stroke-dasharray: 80;
-  stroke-dashoffset: 80;
-  animation: drawPath 0.3s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
+@keyframes penDown {
+  from, to { stroke-opacity: 1; }
 }
 
 /* ── Global animations ───────────────────────────────── */
