@@ -69,8 +69,19 @@ export function About() {
     { value: '7+',    labelKey: 'about.stat.disciplines'  },
   ]
 
+  // overflow-x-clip on the section: the portrait and the bio slide in from
+  // opposite sides, so until the scroll trigger fires they sit 50-60px outside
+  // the layout. On a phone that is wider than the screen — and a page wider
+  // than the screen is a page a finger can drag sideways. Clipped here, at the
+  // element that actually overflows, rather than papered over globally.
+  // `clip` rather than `hidden`: `hidden` would make this a scroll container,
+  // which ScrollTrigger's pinning does not get along with.
   return (
-    <section ref={sectionRef} id="about" className="bg-surface border-t border-edge">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="bg-surface border-t border-edge overflow-x-clip"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
 

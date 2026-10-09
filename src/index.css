@@ -101,9 +101,19 @@
     /* scroll-behavior handled by Lenis */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* overflow-x on html (not body) — avoids the iOS Safari bug where
-       overflow on body breaks position:fixed elements during scroll   */
-    overflow-x: hidden;
+    /* `clip`, not `hidden`. Both stop the page being wider than the screen on
+       paper, but `hidden` makes html a scroll container, and iOS Safari will
+       happily pan that container with a finger — which is how a few stray
+       pixels of overflow turned into the whole page sliding sideways and
+       showing a black band down the edge. `clip` creates no scroll container,
+       so there is nothing to pan. It stays on html rather than body: overflow
+       on body breaks position:fixed elements during scroll on iOS.
+
+       This is a backstop, not a licence to overflow. Anything genuinely wider
+       than the viewport — the album carousel — scrolls inside its own
+       container; if the page itself starts overflowing again, fix the element,
+       not this line. */
+    overflow-x: clip;
   }
 
   body {
