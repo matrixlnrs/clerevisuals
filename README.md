@@ -19,7 +19,8 @@ the project:
 | Where | What | In git? | Served? |
 |---|---|---|---|
 | `photos-source/<album>/` | full-res originals, the archive | no | never |
-| `public/images/<album>/thumbs/` | 900 px JPEG, for grids and covers | yes | yes |
+| `public/images/<album>/thumbs/` | 900 px WebP, for grids and covers | yes | yes |
+| `public/images/<album>/thumbs-md/` | 640 px WebP, the same grids in smaller slots | yes | yes |
 | `public/images/<album>/large/` | 2200 px WebP, for the lightbox | yes | yes |
 
 To add photos:
@@ -56,12 +57,16 @@ entry to `src/data/captions.js` keyed by `<album>-<position>` (`tf-003`):
 The hand-picked "My Favorite Work" grid is a separate list in
 `src/data/featured.js`.
 
-### The hero and the social card
+### One-off images
 
-Both are cropped from one source photo, set in `SINGLES` at the top of
-`scripts/gen-images.mjs`. Change the `source` there and re-run `npm run images`
-to change the shot that greets visitors and the one that shows up when the link
-is shared.
+The images that aren't part of an album are listed in `SINGLES` at the top of
+`scripts/gen-images.mjs`: the social card (`og-cover.jpg`, 1200x630 JPEG, the
+size every scraper crops to) and the About portrait (`portrait.webp` plus a
+narrow `portrait-sm.webp` for phones). Change a `source` there and re-run
+`npm run images`.
+
+The hero is not one of them — it comes straight from an album, like any other
+photo on the page.
 
 ## Deploying
 
@@ -72,5 +77,5 @@ policy). The production URL is `https://clerevisuals.fr` — it also appears in
 ever changes.
 
 ```bash
-npm run build    # → dist/, about 49 MB, the vast majority of it photographs
+npm run build    # → dist/, about 53 MB, the vast majority of it photographs
 ```
