@@ -27,5 +27,3 @@ photos-source/
 .env.local
 .env.*.local
 
-# Editor/tooling local config
-.claude/

@@ -1,8 +1,32 @@
 # Clerevisuals
 
-Portfolio site for Clerevisuals — sports and event photography in Provence.
-React + Vite + Tailwind, with GSAP/Lenis for motion. One page, FR/EN, light
-and dark themes.
+**Live: [clerevisuals.fr](https://clerevisuals.fr)**
+
+Portfolio site for Clerevisuals, my sports and event photography business in Provence, France.
+It is a one-page site with French and English versions and light and dark themes, built to be sent to clubs, circuits and brands.
+
+![Clerevisuals homepage](docs/home.jpg)
+
+## Highlights
+
+- **React 18 + Vite + Tailwind CSS**, with **GSAP** and **Lenis** for scroll-driven motion, a custom cursor and an intro sequence that only plays on the first visit.
+- **Filterable gallery** (track and field, motorsport, cycling, landscape) with a full-screen lightbox.
+- **Bilingual and themeable**: FR/EN and light/dark, through React contexts.
+- **Image pipeline** (`npm run images`): a Node script built on **sharp** turns full-resolution originals into three WebP sizes (640, 900 and 2200 px). It also regenerates the photo catalogue, with real aspect ratios to avoid layout shift, and the sitemap. Album counts are never maintained by hand.
+- **Performance**: self-hosted fonts, the stylesheet inlined into the HTML and right-sized images for every slot.
+- **Security headers** (CSP, Referrer-Policy, Permissions-Policy) shipped in `public/_headers`, so that every deploy carries them.
+- **SEO**: canonical URL, Open Graph card, JSON-LD and a generated sitemap.
+- Deployed on **Netlify**.
+
+## Tech stack
+
+| | |
+|---|---|
+| UI | React 18, Tailwind CSS |
+| Motion | GSAP, Lenis |
+| Build | Vite |
+| Images | sharp (Node), WebP |
+| Hosting | Netlify |
 
 ## Getting started
 
